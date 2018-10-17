@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .btn {
+        background-color: Red;
+        border: none;
+        color: white;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-size: 18px;
+        text-align: center;
+        border-radius: 6px;
+        float:right;
+
+        }
+
+        /* Darker background on mouse-over */
+        .btn:hover {
+        background-color: teal;
+        }
+
+    </style>
+
+</head>
+
+<script>
+
+$(document).ready(function() {
+    $('#ScriptTable').DataTable( {
+        "ajax": {
+            "url": "http://localhost:8080/UserExport/userexport.json",
+            "dataSrc": ""
+        },
+        "columns": [
+			{ "data": "cn" },
+			{ "data": "manager" },
+			{ "data": "sAMAccountName"},
+			{ "data": "employeeType" },
+			{ "data": "extensionAttribute8" },
+
+			
+        ]
+    } );
+} );
+
+</script>
+
+<body class="container">
+
+<!-- Include Pagination for Next Reports -->
+    <div class="w3-show-inline-block">
+
+            <a href="TermUsers.html" class="w3-button w3-red">Back</a>
+            <a href="index.html" class="w3-button  w3-green">Home</a>
+
+        </div>
+    </div>
+
+
+ <! -- End of Customization -->
+<!-- Download on click Button function -->
+<a href="http://localhost:8080/UserExport/userexport.json" download><button class="btn"><i class="fa fa-download "></i>AD Report</button></a>
+
+<!-- <div class="reportheader"> -->
+<h2>AD User Info</h2>
+
+<table id="ScriptTable" class="display" style="width:100%">
+        <thead>
+            <tr>
+				<th>cn</th>
+				<th>manager</th>
+                <th>sAMAccountName</th>
+				<th>employeeType</th>
+				<th>extensionAttribute8</th>
+
+				
+            </tr>
+        </thead>
+</table>
+
+</div>
+
+</body>
+</html>
